@@ -1,13 +1,11 @@
 {
-  "name": "@alpin11/lint",
+  "name": "@undefined/lint",
   "version": "0.1.30",
-  "description": "extendable lint config used by alpin11",
+  "description": "extendable lint config used by undefined",
   "author": "Johann Berger <j.berger@alpin11.at> (https://www.alpin11.at/)",
   "files": [
-    ".eslintrc",
-    ".stylelintrc"
+    ".eslintrc"
   ],
-  "repository": "https://github.com/alpin11/alpin11-lint",
   "scripts": {
     "release": "npm version patch && npm publish"
   },

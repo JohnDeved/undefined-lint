@@ -4,7 +4,7 @@
 ```json
 {
     "extends": [
-        "./node_modules/JohnDeved/undefined-lint/.eslintrc"
+        "./node_modules/@undefined/lint/.eslintrc"
     ]
 }
 ```
