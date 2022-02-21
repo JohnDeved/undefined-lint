@@ -1,0 +1,8 @@
+{
+  "recommendations": [
+    "dbaeumer.vscode-eslint",
+    "stylelint.vscode-stylelint",
+    "vscode-icons-team.vscode-icons",
+    "apollographql.vscode-apollo"
+  ]
+}
