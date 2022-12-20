@@ -10,7 +10,7 @@
     "release": "npm version patch && npm publish"
   },
   "dependencies": {
-    "@typescript-eslint/eslint-plugin": "5.12.1",
+    "@typescript-eslint/eslint-plugin": "5.47.0",
     "@typescript-eslint/parser": "5.12.1",
     "eslint": "^8.9.0",
     "eslint-config-standard-with-typescript": "^21.0.1",
