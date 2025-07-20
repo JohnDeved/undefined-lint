@@ -117,7 +117,7 @@ async function main () {
       'eslint.runtime': 'node',
       'editor.tabSize': 2,
       'editor.codeActionsOnSave': {
-        'source.fixAll.eslint': true,
+        'source.fixAll.eslint': 'explicit',
       },
     }
     fs.writeFileSync(settingsPath, JSON.stringify(settings, null, 2))
