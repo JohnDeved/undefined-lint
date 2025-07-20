@@ -30,6 +30,11 @@
         "@typescript-eslint",
         "react"
     ],
+    "settings": {
+        "react": {
+        "version": "detect"
+        }
+    },
     "rules": {        
         "prefer-template": "error",
         "space-infix-ops": "error",
@@ -83,7 +88,7 @@
         "react/jsx-indent-props": ["error", 2],
         "react/jsx-max-props-per-line": ["error", { "when": "multiline" }],
         "react/jsx-props-no-multi-spaces": "error",
-        "react/jsx-space-before-closing": ["error", "never"],
+        // "react/jsx-space-before-closing": ["error", "never"], // deprecated
         "react/jsx-tag-spacing": ["error", { "closingSlash": "never", "beforeSelfClosing": "never", "afterOpening": "never", "beforeClosing": "allow" }],
         "react/jsx-wrap-multilines": ["error", {
             "declaration": "parens-new-line",
