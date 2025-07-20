@@ -27,11 +27,10 @@ Manual steps (if you prefer):
 5. (Recommended) Add workspace settings `.vscode/settings.json` (the script does this for you, but you can also add manually):
    ```json
    {
-     "eslint.runtime": "node",
-     "editor.tabSize": 2,
-     "editor.codeActionsOnSave": {
-       "source.fixAll.eslint": true,
-       "source.fixAll.stylelint": true
-     }
+      "eslint.runtime": "node",
+      "editor.tabSize": 2,
+      "editor.codeActionsOnSave": {
+        "source.fixAll.eslint": "explicit"
+      }
    }
    ```
