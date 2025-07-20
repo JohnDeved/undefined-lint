@@ -1,24 +1,37 @@
-1. make sure you dont already have eslint installed in your project (uninstall it first if you do)
+## Quick Setup (one-liner)
 
-2. install package `npm i JohnDeved/undefined-lint`
+You can set up ESLint in your project with a single command:
 
-3. create `.eslintrc` file in your project root
-```json
-{
-    "extends": [
-        "./node_modules/@undefined/lint/.eslintrc"
-    ]
-}
+```
+npx github:JohnDeved/undefined-lint setup-eslint
 ```
 
-recommended workspace settings `.vscode/settings.json`:
-```json
-{
-    "eslint.runtime": "node",
-    "editor.tabSize": 2,
-    "editor.codeActionsOnSave": {
-      "source.fixAll.eslint": true,
-      "source.fixAll.stylelint": true
-    }
-}
-```
+---
+
+Manual steps (if you prefer):
+
+1. Make sure you don't already have eslint installed in your project (uninstall it first if you do)
+2. Make sure you have a `tsconfig.json` in your project root.
+3. Install the package:
+   ```sh
+   npm i JohnDeved/undefined-lint
+   ```
+4. Create `.eslintrc` file in your project root:
+   ```json
+   {
+     "extends": [
+       "./node_modules/@undefined/lint/.eslintrc"
+     ]
+   }
+   ```
+5. (Recommended) Add workspace settings `.vscode/settings.json` (the script does this for you, but you can also add manually):
+   ```json
+   {
+     "eslint.runtime": "node",
+     "editor.tabSize": 2,
+     "editor.codeActionsOnSave": {
+       "source.fixAll.eslint": true,
+       "source.fixAll.stylelint": true
+     }
+   }
+   ```
