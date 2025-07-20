@@ -99,25 +99,30 @@ async function main () {
     console.log('.eslintrc already exists, skipping creation.')
   }
 
-  // 5. Add recommended VS Code settings
-  const vscodeDir = path.resolve(process.cwd(), '.vscode')
-  if (!fs.existsSync(vscodeDir)) fs.mkdirSync(vscodeDir)
-  const settingsPath = path.join(vscodeDir, 'settings.json')
-  let settings = {}
-  if (fs.existsSync(settingsPath)) {
-    try { settings = JSON.parse(fs.readFileSync(settingsPath, 'utf8')) } catch {}
+  // 5. Ask to add recommended VS Code settings
+  const addVscodeSettings = await prompt('Add recommended VS Code settings (for auto-fix on save, etc)?')
+  if (addVscodeSettings) {
+    const vscodeDir = path.resolve(process.cwd(), '.vscode')
+    if (!fs.existsSync(vscodeDir)) fs.mkdirSync(vscodeDir)
+    const settingsPath = path.join(vscodeDir, 'settings.json')
+    let settings = {}
+    if (fs.existsSync(settingsPath)) {
+      try { settings = JSON.parse(fs.readFileSync(settingsPath, 'utf8')) } catch {}
+    }
+    settings = {
+      ...settings,
+      eslint: { runtime: 'node' },
+      editor: { tabSize: 2 },
+      editorCodeActionsOnSave: {
+        'source.fixAll.eslint': true,
+        'source.fixAll.stylelint': true,
+      },
+    }
+    fs.writeFileSync(settingsPath, JSON.stringify(settings, null, 2))
+    console.log('Updated .vscode/settings.json')
+  } else {
+    console.log('Skipped adding VS Code settings.')
   }
-  settings = {
-    ...settings,
-    eslint: { runtime: 'node' },
-    editor: { tabSize: 2 },
-    editorCodeActionsOnSave: {
-      'source.fixAll.eslint': true,
-      'source.fixAll.stylelint': true,
-    },
-  }
-  fs.writeFileSync(settingsPath, JSON.stringify(settings, null, 2))
-  console.log('Updated .vscode/settings.json')
 
   console.log('✅ ESLint setup complete!')
 }

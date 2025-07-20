@@ -3,7 +3,7 @@
 You can set up ESLint in your project with a single command:
 
 ```
-npx github:JohnDeved/undefined-lint setup-eslint
+npx github:JohnDeved/undefined-lint
 ```
 
 ---
