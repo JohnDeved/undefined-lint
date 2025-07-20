@@ -124,6 +124,15 @@ async function main () {
     console.log('.eslintrc already exists, skipping creation.')
   }
 
+  // 4b. Create .eslintignore if not present
+  const eslintignorePath = path.resolve(process.cwd(), '.eslintignore')
+  if (!fs.existsSync(eslintignorePath)) {
+    fs.writeFileSync(eslintignorePath, 'dist/\nbuild/\nnode_modules/\n')
+    console.log('Created .eslintignore')
+  } else {
+    console.log('.eslintignore already exists, skipping creation.')
+  }
+
   // 5. Ask to add recommended VS Code settings
   const addVscodeSettings = await prompt('Add recommended VS Code settings (for auto-fix on save, etc)?')
 

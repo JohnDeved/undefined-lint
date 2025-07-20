@@ -68,6 +68,7 @@
         "@typescript-eslint/method-signature-style": "off",
         "@typescript-eslint/return-await": "off",
         "@typescript-eslint/no-non-null-assertion": "off",
+        "@typescript-eslint/no-confusing-void-expression": "off",
 
         "react/jsx-indent": ["error", 2, { "checkAttributes": true, "indentLogicalExpressions": true }],
         "react/function-component-definition": [2, { "namedComponents": "arrow-function" }],
@@ -81,7 +82,6 @@
         "react/jsx-fragments": ["error", "syntax"],
         "react/jsx-indent-props": ["error", 2],
         "react/jsx-max-props-per-line": ["error", { "when": "multiline" }],
-        "react/jsx-newline": ["error", { "prevent": true }],
         "react/jsx-props-no-multi-spaces": "error",
         "react/jsx-space-before-closing": ["error", "never"],
         "react/jsx-tag-spacing": ["error", { "closingSlash": "never", "beforeSelfClosing": "never", "afterOpening": "never", "beforeClosing": "allow" }],
@@ -97,6 +97,9 @@
         "react/jsx-first-prop-new-line": ["error", "multiline-multiprop"],
         "react/jsx-no-useless-fragment": "error",
         "react/display-name": "off",
-        "react/prop-types": "off"
+        "react/prop-types": "off",
+        "react/no-unknown-property": "off",
+        "react/react-in-jsx-scope": "off",
+        "react/jsx-newline": "off"
     }
 }
