@@ -101,9 +101,12 @@ async function main () {
 
   // 5. Ask to add recommended VS Code settings
   const addVscodeSettings = await prompt('Add recommended VS Code settings (for auto-fix on save, etc)?')
+
   if (addVscodeSettings) {
     const vscodeDir = path.resolve(process.cwd(), '.vscode')
     if (!fs.existsSync(vscodeDir)) fs.mkdirSync(vscodeDir)
+
+    // Update settings.json
     const settingsPath = path.join(vscodeDir, 'settings.json')
     let settings = {}
     if (fs.existsSync(settingsPath)) {
@@ -119,6 +122,23 @@ async function main () {
     }
     fs.writeFileSync(settingsPath, JSON.stringify(settings, null, 2))
     console.log('Updated .vscode/settings.json')
+
+    // Update extensions.json
+    const extensionsPath = path.join(vscodeDir, 'extensions.json')
+    const extensions = { recommendations: [] as string[] }
+    if (fs.existsSync(extensionsPath)) {
+      try {
+        const parsed = JSON.parse(fs.readFileSync(extensionsPath, 'utf8'))
+        if (Array.isArray(parsed.recommendations)) {
+          extensions.recommendations = parsed.recommendations
+        }
+      } catch {}
+    }
+    if (!extensions.recommendations.includes('dbaeumer.vscode-eslint')) {
+      extensions.recommendations.push('dbaeumer.vscode-eslint')
+    }
+    fs.writeFileSync(extensionsPath, JSON.stringify(extensions, null, 2))
+    console.log('Updated .vscode/extensions.json')
   } else {
     console.log('Skipped adding VS Code settings.')
   }
