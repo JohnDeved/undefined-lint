@@ -27,6 +27,9 @@ const ESLINT_PACKAGES = [
   'eslint-plugin-react',
   'eslint-plugin-react-hooks',
   'eslint-plugin-tailwindcss',
+  '@eslint/js',
+  'eslint-plugin-react-refresh',
+  'typescript-eslint',
 ]
 
 function prompt (question: string): Promise<boolean> {
