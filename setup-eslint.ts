@@ -88,16 +88,38 @@ async function main () {
   console.log('Installing JohnDeved/undefined-lint...')
   execSync('npm i JohnDeved/undefined-lint', { stdio: 'inherit' })
 
-  // 4. Create .eslintrc if not present
+  // 4. Create .eslintrc if not present, with smart parserOptions.project
   const eslintrcPath = path.resolve(process.cwd(), '.eslintrc')
   if (!fs.existsSync(eslintrcPath)) {
+    // Try to find the best tsconfig for parserOptions.project
+    const tsconfigPath = './tsconfig.json'
+    let parserProject = tsconfigPath
+    let tsconfig
+    try {
+      tsconfig = JSON.parse(fs.readFileSync(path.resolve(process.cwd(), tsconfigPath), 'utf8'))
+      // Check for references
+      if (Array.isArray(tsconfig.references) && tsconfig.references.length > 0) {
+        // Prefer a reference with 'app' or 'src' in the path, else first
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        let bestRef = tsconfig.references.find((ref: any) => typeof ref.path === 'string' && (ref.path.includes('app') || ref.path.includes('src')))
+        if (!bestRef) bestRef = tsconfig.references[0]
+        const refPath = bestRef?.path
+        if (refPath && fs.existsSync(path.resolve(process.cwd(), refPath))) {
+          parserProject = refPath
+        }
+      }
+      // Check for include with src or app (future: could use this info)
+    } catch {}
     fs.writeFileSync(
       eslintrcPath,
       JSON.stringify({
         extends: ['./node_modules/@undefined/lint/.eslintrc'],
+        parserOptions: {
+          project: parserProject,
+        },
       }, null, 2),
     )
-    console.log('Created .eslintrc')
+    console.log('Created .eslintrc with parserOptions.project =', parserProject)
   } else {
     console.log('.eslintrc already exists, skipping creation.')
   }
