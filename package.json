@@ -11,7 +11,8 @@
     "setup-eslint": "./setup-eslint.ts"
   },
   "scripts": {
-    "release": "npm version patch && npm publish"
+    "release": "npm version patch && npm publish",
+    "test:lint": "vitest run lint-test/all-lint-rules.test.js"
   },
   "dependencies": {
     "@typescript-eslint/eslint-plugin": "^6.21.0",
@@ -23,10 +24,11 @@
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-promise": "^6.6.0",
     "eslint-plugin-react": "^7.37.5",
-    "eslint-plugin-react-hooks": "^5.2.0",
+    "eslint-plugin-react-hooks": "^6.0.0-rc.1",
     "tsx": "^4.20.3"
   },
   "devDependencies": {
-    "@types/node": "^24.0.15"
+    "@types/node": "^24.0.15",
+    "vitest": "^3.2.4"
   }
 }

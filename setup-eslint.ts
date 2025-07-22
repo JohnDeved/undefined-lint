@@ -104,7 +104,7 @@ async function main () {
         let bestRef = tsconfig.references.find((ref: any) => typeof ref.path === 'string' && (ref.path.includes('app') || ref.path.includes('src')))
         if (!bestRef) bestRef = tsconfig.references[0]
         const refPath = bestRef?.path
-        if (refPath && fs.existsSync(path.resolve(process.cwd(), refPath))) {
+        if (typeof refPath === 'string' && fs.existsSync(path.resolve(process.cwd(), refPath))) {
           parserProject = refPath
         }
       }

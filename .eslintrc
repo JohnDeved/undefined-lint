@@ -10,7 +10,6 @@
     },
     "extends": [
         "plugin:react/recommended",
-        "plugin:react-hooks/recommended",
         "standard-with-typescript"
     ],
     "globals": {
@@ -28,7 +27,8 @@
     },
     "plugins": [
         "@typescript-eslint",
-        "react"
+        "react",
+        "react-hooks"
     ],
     "settings": {
         "react": {
@@ -36,6 +36,7 @@
         }
     },
     "rules": {        
+        "react-hooks/react-compiler": "error",
         "prefer-template": "error",
         "space-infix-ops": "error",
         "jsx-quotes": ["error", "prefer-double"],
