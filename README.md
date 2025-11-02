@@ -1,3 +1,5 @@
+replaced by https://github.com/JohnDeved/ox-standard
+
 ## Quick Setup (one-liner)
 
 You can set up ESLint in your project with a single command:
